@@ -5,7 +5,15 @@ mongoose.connect(process.env.MONGO_URI,{ useNewUrlParser: true, useUnifiedTopolo
   console.log("successfully connected to DATABASE")});
 
 
-let Person;
+  const personSchema = new Schema({
+    name: { type: String, required: true },
+    age: Number,
+    favoriteFoods: [String]
+  });
+
+
+  let Person = mongoose.model("Person", personSchema);
+
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
